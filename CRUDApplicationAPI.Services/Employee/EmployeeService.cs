@@ -42,9 +42,9 @@ namespace CRUDApplicationAPI.Services.Employee
                         Dateofbirth = DateTime.Parse(row["DATE_OF_BIRTH"].ToString()),
                         Age = CalculateAge(DateTime.Parse(row["DATE_OF_BIRTH"].ToString())),
                         Salary = Convert.ToDouble(row["SALARY"]),
-                        DepartmentId = Convert.ToInt32(row["DPT_ID"]),
-                        Departmentcode = row["DPT_CODE"].ToString(),
-                        DepartmentName = row["DPT_NAME"].ToString()
+                        DepartmentId = row["DPT_ID"] != DBNull.Value ? Convert.ToInt32(row["DPT_ID"].ToString()) : 0,
+                        Departmentcode = row["DPT_CODE"] != DBNull.Value ? row["DPT_CODE"].ToString() : "",
+                        DepartmentName = row["DPT_NAME"] != DBNull.Value ? row["DPT_NAME"].ToString() : ""
                     };
                     employeeModels.Add(model);
                 }
