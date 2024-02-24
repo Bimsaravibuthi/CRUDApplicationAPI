@@ -26,9 +26,9 @@ namespace CRUDApplicationAPI.Controllers
         {
             if (_employeeRepository.AddEmployee(employee) >= 1)
             {
-                return Ok("The employee was created successfully.");
+                return Ok( new { state = "success", msg = "The employee was created successfully." });
             }
-            return BadRequest("Employee creation was unsuccessful.");
+            return BadRequest( new { state = "error", msg = "Employee creation was unsuccessful." });
         }
 
         [HttpPut("UpdateEmployee/{Id}")]
@@ -36,9 +36,9 @@ namespace CRUDApplicationAPI.Controllers
         {
             if (_employeeRepository.UpdateEmployee(employee, Id) >= 1)
             {
-                return Ok("The employee was updated successfully.");
+                return Ok( new { state = "success", msg = "The employee was updated successfully." });
             }
-            return BadRequest("The employee update was unsuccessful.");
+            return BadRequest( new { state = "error", msg = "The employee update was unsuccessful." });
         }
 
         [HttpDelete("DeleteEmployee/{Id}")]
@@ -46,9 +46,9 @@ namespace CRUDApplicationAPI.Controllers
         {
             if (_employeeRepository.DeleteEmployee(Id) >= 1)
             {
-                return Ok("The employee was deleted successfully.");
+                return Ok( new { state = "success", msg = "The employee was deleted successfully." });
             }
-            return BadRequest("The employee deletion was unsuccessful.");
+            return BadRequest( new { state = "error", msg = "The employee deletion was unsuccessful." });
         }
     }
 }

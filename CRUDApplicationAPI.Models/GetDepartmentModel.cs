@@ -1,6 +1,6 @@
 ﻿namespace CRUDApplicationAPI.Models
 {
-    public class DepartmentModel
+    public class GetDepartmentModel
     {
         public int Id { get; set; }
         public string? Code { get; set; }

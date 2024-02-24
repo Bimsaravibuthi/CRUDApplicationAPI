@@ -12,12 +12,12 @@ namespace CRUDApplicationAPI.Services.Department
         {
             _database = new();
         }
-        public List<DepartmentModel> GetDepartments(int? Id)
+        public List<GetDepartmentModel> GetDepartments(int? Id)
         {
-            List<DepartmentModel> departmentModels = new();
+            List<GetDepartmentModel> departmentModels = new();
             try
             {
-                SqlCommand sqlCommand = new("GetDepartments", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_GetDepartments", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -33,11 +33,11 @@ namespace CRUDApplicationAPI.Services.Department
 
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    DepartmentModel model = new()
+                    GetDepartmentModel model = new()
                     {
-                        Id = Convert.ToInt32(row["ID"]),
-                        Code = row["CODE"].ToString(),
-                        Name = row["NAME"].ToString()
+                        Id = Convert.ToInt32(row["dpt_id"]),
+                        Code = row["dpt_code"].ToString(),
+                        Name = row["dpt_name"].ToString()
                     };
                     departmentModels.Add(model);
                 }
@@ -52,12 +52,12 @@ namespace CRUDApplicationAPI.Services.Department
             }  
             return departmentModels;
         }
-        public int AddDepartment(DepartmentModel departmentModel)
+        public int AddDepartment(ManageDepartmentModel departmentModel)
         {
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("AddDepartment", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_AddDepartment", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -78,12 +78,12 @@ namespace CRUDApplicationAPI.Services.Department
 
             return OPState;
         }
-        public int UpdateDepartment(DepartmentModel departmentModel, int Id)
+        public int UpdateDepartment(ManageDepartmentModel departmentModel, int Id)
         {
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("UpdateDepartment", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_UpdateDepartment", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -110,7 +110,7 @@ namespace CRUDApplicationAPI.Services.Department
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("DeleteDepartment", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_DeleteDepartment", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };

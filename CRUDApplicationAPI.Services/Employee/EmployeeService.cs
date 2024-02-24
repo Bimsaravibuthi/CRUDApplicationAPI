@@ -17,7 +17,7 @@ namespace CRUDApplicationAPI.Services.Employee
             List<GetEmployeeModel> employeeModels = new();
             try
             {
-                SqlCommand sqlCommand = new("GetEmployees", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_GetEmployees", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -35,16 +35,16 @@ namespace CRUDApplicationAPI.Services.Employee
                 {
                     GetEmployeeModel model = new()
                     {
-                        Id = Convert.ToInt32(row["ID"]),
-                        Firstname = row["FIRSTNAME"].ToString(),
-                        Lastname = row["LASTNAME"].ToString(),
-                        Email = row["EMAIL"].ToString(),
-                        Dateofbirth = DateTime.Parse(row["DATE_OF_BIRTH"].ToString()),
-                        Age = CalculateAge(DateTime.Parse(row["DATE_OF_BIRTH"].ToString())),
-                        Salary = Convert.ToDouble(row["SALARY"]),
-                        DepartmentId = row["DPT_ID"] != DBNull.Value ? Convert.ToInt32(row["DPT_ID"].ToString()) : 0,
-                        Departmentcode = row["DPT_CODE"] != DBNull.Value ? row["DPT_CODE"].ToString() : "",
-                        DepartmentName = row["DPT_NAME"] != DBNull.Value ? row["DPT_NAME"].ToString() : ""
+                        Id = Convert.ToInt32(row["emp_id"]),
+                        Firstname = row["emp_firstname"].ToString(),
+                        Lastname = row["emp_lastname"].ToString(),
+                        Email = row["emp_email"].ToString(),
+                        Dateofbirth = DateTime.Parse(row["emp_date_of_birth"].ToString()),
+                        Age = CalculateAge(DateTime.Parse(row["emp_date_of_birth"].ToString())),
+                        Salary = Convert.ToDouble(row["emp_salary"]),
+                        DepartmentId = row["dpt_id"] != DBNull.Value ? Convert.ToInt32(row["dpt_id"].ToString()) : 0,
+                        Departmentcode = row["dpt_code"] != DBNull.Value ? row["dpt_code"].ToString() : "",
+                        DepartmentName = row["dpt_name"] != DBNull.Value ? row["dpt_name"].ToString() : ""
                     };
                     employeeModels.Add(model);
                 }
@@ -64,7 +64,7 @@ namespace CRUDApplicationAPI.Services.Employee
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("AddEmployee", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_AddEmployee", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -93,7 +93,7 @@ namespace CRUDApplicationAPI.Services.Employee
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("UpdateEmployee", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_UpdateEmployee", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -123,7 +123,7 @@ namespace CRUDApplicationAPI.Services.Employee
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("DeleteEmployee", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_DeleteEmployee", _database.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };

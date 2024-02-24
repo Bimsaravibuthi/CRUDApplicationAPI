@@ -4,7 +4,7 @@ namespace CRUDApplicationAPI.DataAccess
 {
     public class DatabaseContext
     {
-        private const string ConnectionString = "Data Source=DESKTOP-TH5C59L\\SQLEXPRESS;Initial Catalog=CRUDApplication;Integrated Security=True;";
+        private const string ConnectionString = "Data Source=DESKTOP-O95VIPJ\\SQLEXPRESS;Initial Catalog=CRUDApplication;Integrated Security=True;";
         private readonly SqlConnection _connection;
 
         public DatabaseContext()

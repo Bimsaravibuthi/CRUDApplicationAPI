@@ -22,23 +22,23 @@ namespace CRUDApplicationAPI.Controllers
         }
 
         [HttpPost("AddDepartment")]
-        public IActionResult AddDepartment([FromBody] DepartmentModel department)
+        public IActionResult AddDepartment([FromBody] ManageDepartmentModel department)
         {
             if(_departmentRepository.AddDepartment(department) >= 1)
             { 
-                return Ok("The department was created successfully.");
+                return Ok( new { state = "success", msg = "The department was created successfully." });
             }
-            return BadRequest("Department creation was unsuccessful.");
+            return BadRequest( new { state = "error", msg = "Department creation was unsuccessful." });
         }
 
         [HttpPut("UpdateDepartment/{Id}")]
-        public IActionResult UpdateDepartment([FromBody] DepartmentModel department, [FromRoute] int Id)
+        public IActionResult UpdateDepartment([FromBody] ManageDepartmentModel department, [FromRoute] int Id)
         {
             if (_departmentRepository.UpdateDepartment(department, Id) >= 1)
             {
-                return Ok("The department was updated successfully.");
+                return Ok( new { state = "success", msg = "The department was updated successfully." });
             }
-            return BadRequest("The department update was unsuccessful.");
+            return BadRequest( new { state = "error", msg = "The department update was unsuccessful." });
         }
 
         [HttpDelete("DeleteDepartment/{Id}")]
@@ -46,9 +46,9 @@ namespace CRUDApplicationAPI.Controllers
         {
             if (_departmentRepository.DeleteDepartment(Id) >= 1)
             {
-                return Ok("The department was deleted successfully.");
+                return Ok( new { state = "success", msg = "The department was deleted successfully." });
             }
-            return BadRequest("The department deletion was unsuccessful.");
+            return BadRequest( new { state = "error", msg = "The department deletion was unsuccessful." });
         }
     }
 }
