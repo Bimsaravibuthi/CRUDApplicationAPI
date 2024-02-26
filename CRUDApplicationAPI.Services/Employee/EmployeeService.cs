@@ -7,17 +7,17 @@ namespace CRUDApplicationAPI.Services.Employee
 {
     public class EmployeeService : IEmployeeRepository
     {
-        private readonly DatabaseContext _database;
+        private readonly SqlConnection _connection;
         public EmployeeService()
         {
-            _database = new();
+            _connection = DatabaseContext.GetSqlConnection();
         }
         public List<GetEmployeeModel> GetEmployees(int? Id)
         {
             List<GetEmployeeModel> employeeModels = new();
             try
             {
-                SqlCommand sqlCommand = new("sp_GetEmployees", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_GetEmployees", _connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -55,7 +55,7 @@ namespace CRUDApplicationAPI.Services.Employee
             }
             finally
             {
-                _database.Dispose();
+                _connection.Dispose();
             }
             return employeeModels;
         }
@@ -64,7 +64,7 @@ namespace CRUDApplicationAPI.Services.Employee
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("sp_AddEmployee", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_AddEmployee", _connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -84,7 +84,7 @@ namespace CRUDApplicationAPI.Services.Employee
             }
             finally
             {
-                _database.Dispose();
+                _connection.Dispose();
             }
             return OPState;
         }
@@ -93,7 +93,7 @@ namespace CRUDApplicationAPI.Services.Employee
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("sp_UpdateEmployee", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_UpdateEmployee", _connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -114,7 +114,7 @@ namespace CRUDApplicationAPI.Services.Employee
             }
             finally
             {
-                _database.Dispose();
+                _connection.Dispose();
             }
             return OPState;
         }
@@ -123,7 +123,7 @@ namespace CRUDApplicationAPI.Services.Employee
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("sp_DeleteEmployee", _database.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_DeleteEmployee", _connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -138,7 +138,7 @@ namespace CRUDApplicationAPI.Services.Employee
             }
             finally
             {
-                _database.Dispose();
+                _connection.Dispose();
             }
             return OPState;
         }
