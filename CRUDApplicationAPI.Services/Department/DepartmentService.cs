@@ -7,17 +7,12 @@ namespace CRUDApplicationAPI.Services.Department
 {
     public class DepartmentService : IDepartmentRepository
     {
-        private readonly DatabaseContext _connection;
-        public DepartmentService()
-        {
-            _connection = new();
-        }
         public List<GetDepartmentModel> GetDepartments(int? Id)
         {
             List<GetDepartmentModel> departmentModels = new();
             try
             {
-                SqlCommand sqlCommand = new("sp_GetDepartments", _connection.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_GetDepartments", DatabaseContext.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -48,7 +43,7 @@ namespace CRUDApplicationAPI.Services.Department
             }
             finally
             {
-                _connection.Dispose();
+                DatabaseContext.Close();
             }  
             return departmentModels;
         }
@@ -57,7 +52,7 @@ namespace CRUDApplicationAPI.Services.Department
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("AddDepartment", _connection.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_AddDepartment", DatabaseContext.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -73,7 +68,7 @@ namespace CRUDApplicationAPI.Services.Department
             }
             finally
             {
-                _connection.Dispose();
+                DatabaseContext.Close();
             }
 
             return OPState;
@@ -83,7 +78,7 @@ namespace CRUDApplicationAPI.Services.Department
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("UpdateDepartment", _connection.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_UpdateDepartment", DatabaseContext.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -100,7 +95,7 @@ namespace CRUDApplicationAPI.Services.Department
             }
             finally
             {
-                _connection.Dispose();
+                DatabaseContext.Close();
             }
 
             return OPState;
@@ -110,7 +105,7 @@ namespace CRUDApplicationAPI.Services.Department
             int OPState = 0;
             try
             {
-                SqlCommand sqlCommand = new("DeleteDepartment", _connection.GetSqlConnection())
+                SqlCommand sqlCommand = new("sp_DeleteDepartment", DatabaseContext.GetSqlConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -125,7 +120,7 @@ namespace CRUDApplicationAPI.Services.Department
             }
             finally
             {
-                _connection.Dispose();
+                DatabaseContext.Close();
             }
             return OPState;
         }

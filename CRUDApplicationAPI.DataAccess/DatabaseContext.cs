@@ -4,32 +4,39 @@ namespace CRUDApplicationAPI.DataAccess
 {
     public class DatabaseContext
     {
-        private const string ConnectionString = "Data Source=DESKTOP-TH5C59L\\SQLEXPRESS;Initial Catalog=CRUDApplication;Integrated Security=True;";
-        private readonly SqlConnection _connection;
+        private const string ConnectionString = "Data Source=DESKTOP-TH5C59L\\SQLEXPRESS;" +
+                                                "Initial Catalog=CRUDApplication;" +
+                                                "Integrated Security=True;";
+        private static SqlConnection? _connection = null;
+        private static readonly object _connectionLock = new();
 
-        public DatabaseContext()
+        private DatabaseContext() { }
+        public static SqlConnection GetSqlConnection()
         {
-            _connection = new SqlConnection(ConnectionString);
-        }
-        public SqlConnection GetSqlConnection()
-        {
-            if (_connection.State != System.Data.ConnectionState.Open)
+            lock (_connectionLock)
             {
-                _connection.Open();
-            }
-            return _connection;
-        }
+                _connection ??= new SqlConnection(ConnectionString);
 
-        public void Dispose()
-        {
-            if (_connection != null)
-            {
-                if (_connection.State != System.Data.ConnectionState.Closed)
+                if (_connection.State != System.Data.ConnectionState.Open)
                 {
-                    _connection.Close();
+                    _connection.Open();
                 }
-                _connection.Dispose();
+                return _connection;
             }
+        }
+
+        public static void Close()
+        {
+            lock ( _connectionLock)
+            {
+                if (_connection != null)
+                {
+                    if (_connection.State != System.Data.ConnectionState.Closed)
+                    {
+                        _connection.Close();
+                    }
+                }
+            }       
         }
     }
 }
