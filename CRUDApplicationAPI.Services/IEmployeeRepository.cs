@@ -1,6 +1,6 @@
 ﻿using CRUDApplicationAPI.Models;
 
-namespace CRUDApplicationAPI.Services.Employee
+namespace CRUDApplicationAPI.Shared
 {
     public interface IEmployeeRepository
     {

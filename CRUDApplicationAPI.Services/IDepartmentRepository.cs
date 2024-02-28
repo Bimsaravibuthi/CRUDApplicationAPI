@@ -1,6 +1,6 @@
 ﻿using CRUDApplicationAPI.Models;
 
-namespace CRUDApplicationAPI.Services.Department
+namespace CRUDApplicationAPI.Shared
 {
     public interface IDepartmentRepository
     {

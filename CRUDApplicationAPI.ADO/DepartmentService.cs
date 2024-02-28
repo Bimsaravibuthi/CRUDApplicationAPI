@@ -1,9 +1,10 @@
 ﻿using CRUDApplicationAPI.DataAccess;
 using CRUDApplicationAPI.Models;
+using CRUDApplicationAPI.Shared;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace CRUDApplicationAPI.Services.Department
+namespace CRUDApplicationAPI.ADO
 {
     public class DepartmentService : IDepartmentRepository
     {
@@ -61,6 +62,8 @@ namespace CRUDApplicationAPI.Services.Department
                 sqlCommand.Parameters.AddWithValue("@Name", departmentModel.Name);
 
                 OPState = sqlCommand.ExecuteNonQuery();
+
+                return OPState;
             }
             catch (Exception)
             {
@@ -70,8 +73,6 @@ namespace CRUDApplicationAPI.Services.Department
             {
                 DatabaseContext.Close();
             }
-
-            return OPState;
         }
         public int UpdateDepartment(ManageDepartmentModel departmentModel, int Id)
         {

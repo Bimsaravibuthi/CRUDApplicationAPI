@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI", "CRUDApplicationAPI\CRUDApplicationAPI.csproj", "{0EE4D207-C63F-41E7-A209-F54E6C38E436}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDApplicationAPI", "CRUDApplicationAPI\CRUDApplicationAPI.csproj", "{0EE4D207-C63F-41E7-A209-F54E6C38E436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.Services", "CRUDApplicationAPI.Services\CRUDApplicationAPI.Services.csproj", "{B6E7E3AE-AC60-4742-82B5-92602F07BA2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.Shared", "CRUDApplicationAPI.Services\CRUDApplicationAPI.Shared.csproj", "{B6E7E3AE-AC60-4742-82B5-92602F07BA2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.DataAccess", "CRUDApplicationAPI.DataAccess\CRUDApplicationAPI.DataAccess.csproj", "{911B5F59-6E30-4E55-B1B0-33C0FF89D3B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDApplicationAPI.DataAccess", "CRUDApplicationAPI.DataAccess\CRUDApplicationAPI.DataAccess.csproj", "{911B5F59-6E30-4E55-B1B0-33C0FF89D3B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.Models", "CRUDApplicationAPI.Models\CRUDApplicationAPI.Models.csproj", "{67DE9C4E-0D86-4898-A59B-AB818A6F9477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDApplicationAPI.Models", "CRUDApplicationAPI.Models\CRUDApplicationAPI.Models.csproj", "{67DE9C4E-0D86-4898-A59B-AB818A6F9477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.Dapper", "CRUDApplicationAPI.Dapper\CRUDApplicationAPI.Dapper.csproj", "{147FABC6-001E-4C48-9000-9F8BE5FDE2D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.ADO", "CRUDApplicationAPI.ADO\CRUDApplicationAPI.ADO.csproj", "{32F04EBB-0D1A-466F-818D-3EE9CBC80454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApplicationAPI.EntityFramework", "CRUDApplicationAPI.EntityFramework\CRUDApplicationAPI.EntityFramework.csproj", "{733C723E-F844-4AAC-A3B2-07FF38746340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{67DE9C4E-0D86-4898-A59B-AB818A6F9477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67DE9C4E-0D86-4898-A59B-AB818A6F9477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67DE9C4E-0D86-4898-A59B-AB818A6F9477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{147FABC6-001E-4C48-9000-9F8BE5FDE2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147FABC6-001E-4C48-9000-9F8BE5FDE2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147FABC6-001E-4C48-9000-9F8BE5FDE2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147FABC6-001E-4C48-9000-9F8BE5FDE2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F04EBB-0D1A-466F-818D-3EE9CBC80454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F04EBB-0D1A-466F-818D-3EE9CBC80454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F04EBB-0D1A-466F-818D-3EE9CBC80454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F04EBB-0D1A-466F-818D-3EE9CBC80454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733C723E-F844-4AAC-A3B2-07FF38746340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733C723E-F844-4AAC-A3B2-07FF38746340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733C723E-F844-4AAC-A3B2-07FF38746340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733C723E-F844-4AAC-A3B2-07FF38746340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

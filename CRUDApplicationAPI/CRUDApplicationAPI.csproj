@@ -12,8 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CRUDApplicationAPI.ADO\CRUDApplicationAPI.ADO.csproj" />
+    <ProjectReference Include="..\CRUDApplicationAPI.Dapper\CRUDApplicationAPI.Dapper.csproj" />
+    <ProjectReference Include="..\CRUDApplicationAPI.EntityFramework\CRUDApplicationAPI.EntityFramework.csproj" />
     <ProjectReference Include="..\CRUDApplicationAPI.Models\CRUDApplicationAPI.Models.csproj" />
-    <ProjectReference Include="..\CRUDApplicationAPI.Services\CRUDApplicationAPI.Services.csproj" />
+    <ProjectReference Include="..\CRUDApplicationAPI.Services\CRUDApplicationAPI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

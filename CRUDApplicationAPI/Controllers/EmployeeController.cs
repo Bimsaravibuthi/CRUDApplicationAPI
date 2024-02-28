@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CRUDApplicationAPI.Models;
-using CRUDApplicationAPI.Services.Employee;
+using CRUDApplicationAPI.Shared;
 
 namespace CRUDApplicationAPI.Controllers
 {

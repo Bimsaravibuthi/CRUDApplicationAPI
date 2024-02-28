@@ -1,5 +1,5 @@
-using CRUDApplicationAPI.Services.Department;
-using CRUDApplicationAPI.Services.Employee;
+using CRUDApplicationAPI.Shared;
+using CRUDApplicationAPI.Dapper;
 
 var builder = WebApplication.CreateBuilder(args);
 

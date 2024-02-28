@@ -1,9 +1,10 @@
 ﻿using CRUDApplicationAPI.DataAccess;
 using CRUDApplicationAPI.Models;
+using CRUDApplicationAPI.Shared;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace CRUDApplicationAPI.Services.Employee
+namespace CRUDApplicationAPI.ADO
 {
     public class EmployeeService : IEmployeeRepository
     {
